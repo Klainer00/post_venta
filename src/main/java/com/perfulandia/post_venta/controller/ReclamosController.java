@@ -40,6 +40,7 @@ public class ReclamosController {
 public ResponseEntity<Reclamo> crearReclamo(@PathVariable int id_usuario, @RequestBody Reclamo reclamo) {
     Usuario buscar = usuarioService.findById(id_usuario);
     if (buscar != null) {
+        System.out.println("hola");
         // Asigna el usuario encontrado al reclamo antes de guardarlo.
         reclamo.setUsuario(buscar); 
         return new ResponseEntity<>(reclamosService.crearReclamo(reclamo), HttpStatus.CREATED);

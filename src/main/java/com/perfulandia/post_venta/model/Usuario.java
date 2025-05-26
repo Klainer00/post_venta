@@ -2,6 +2,7 @@ package com.perfulandia.post_venta.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
@@ -45,10 +46,13 @@ public class Usuario {
     @Column(nullable = false)
     private int permiso;
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL,orphanRemoval = true)
-    @JsonManagedReference("usuario-reclamo")
+    //@JsonManagedReference("usuario-reclamo")
+    @JsonIgnore
     private List<Reclamo> reclamosList;
 @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL,orphanRemoval = true)
-@JsonManagedReference("usuario-venta") // <-- ¡Añádele un nombre único aquí!
+//@JsonManagedReference("usuario-venta") // <-- ¡Añádele un nombre único aquí!
+@JsonIgnore
+
 private List<Venta> ventasList;
 
 }

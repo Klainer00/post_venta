@@ -30,7 +30,7 @@ public class Reclamo {
     private LocalDate fecha;
     @ManyToOne()
     @JoinColumn(name = "id_usuario" )
-    @JsonBackReference("usuario-reclamo")  // Aquí se evita la serialización en la parte "muchos"
+   // @JsonBackReference("usuario-reclamo")  // Aquí se evita la serialización en la parte "muchos"
     private Usuario usuario;
     
 }
