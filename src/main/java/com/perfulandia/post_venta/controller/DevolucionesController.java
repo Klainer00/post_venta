@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.perfulandia.post_venta.model.Devolucion;
@@ -56,10 +55,8 @@ public class DevolucionesController {
     public ResponseEntity<Devolucion> actualizarDevolucion(@PathVariable("id") int id,@RequestBody Devolucion devolucionParaActualizar) {
         Devolucion devolucionActualizada = devolucionesService.actualizarDevolucion(id, devolucionParaActualizar);
     if (devolucionActualizada != null) {
-        // 3. Si todo salió bien, devuelve el objeto actualizado y un 200 OK
         return ResponseEntity.ok(devolucionActualizada);
     } else {
-        // 4. Si el servicio devolvió null, significa que no se encontró. Devuelve 404 Not Found.
         return ResponseEntity.notFound().build();
     }
 }
