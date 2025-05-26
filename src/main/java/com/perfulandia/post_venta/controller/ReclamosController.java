@@ -44,7 +44,7 @@ public ResponseEntity<Reclamo> crearReclamo(@PathVariable int id_usuario, @Reque
         reclamo.setUsuario(buscar); 
         return new ResponseEntity<>(reclamosService.crearReclamo(reclamo), HttpStatus.CREATED);
     } else {
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND); // O NOT_ACCEPTABLE, pero NOT_FOUND es más común si el usuario no existe.
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT); 
     }
 }
     
