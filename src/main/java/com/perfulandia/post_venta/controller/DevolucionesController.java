@@ -27,7 +27,7 @@ public class DevolucionesController {
     private VentaService ventaService;
 
     @GetMapping
-    public ResponseEntity<List<Devolucion>> getAllDevoluciones() {
+    public ResponseEntity<List<Devolucion>> getAll() {
         List<Devolucion> devoluciones = devolucionesService.findAll();
         if (!devoluciones.isEmpty()) {
             return new ResponseEntity<>(devoluciones, HttpStatus.OK);

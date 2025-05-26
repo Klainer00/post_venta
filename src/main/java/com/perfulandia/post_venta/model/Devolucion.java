@@ -31,8 +31,7 @@ public class Devolucion {
     private int estado;// 1 para pendiente, 2 para aceptada, 3 para rechazada
 
     @ManyToOne()
-    @JoinColumn(name = "id_venta" )
-    @JsonBackReference // Aquí se evita la serialización en la parte "muchos"
+    @JoinColumn(name = "id_venta" , nullable = false)
     private Venta venta;
      
 
