@@ -28,7 +28,7 @@ public class Devolucion {
     @Column(nullable = false)
     private LocalDate fecha; // Fecha de la devolución
     @Column(nullable = false)
-    private int estado;// 1 para pendiente, 2 para aceptada, 3 para rechazada
+    private int estado = 1;// 1 para pendiente, 2 para aceptada, 3 para rechazada
 
     @ManyToOne()
     @JoinColumn(name = "id_venta" , nullable = false)

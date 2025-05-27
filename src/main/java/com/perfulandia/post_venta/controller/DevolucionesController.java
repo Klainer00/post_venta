@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/api/devoluciones")
@@ -49,6 +51,16 @@ public class DevolucionesController {
 
         }
 
+    }
+    @GetMapping("/{idDevoluciones}")
+    public ResponseEntity<Devolucion>getDevolucionById(@PathVariable int idDevoluciones){
+        Devolucion devolucion = devolucionesService.findById(idDevoluciones);
+        if (devolucion != null) {
+            return ResponseEntity.ok(devolucion);
+
+        }else{
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PutMapping("/actualizar/{id}")
