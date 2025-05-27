@@ -10,7 +10,7 @@ import com.perfulandia.post_venta.model.Devolucion;
 public interface DevolucionRepository extends JpaRepository<Devolucion, Integer> {
     List<Devolucion> findAll();
     @SuppressWarnings("unchecked")
-
+    Devolucion findById(int id);
     Devolucion save(Devolucion reclamo);
 
     

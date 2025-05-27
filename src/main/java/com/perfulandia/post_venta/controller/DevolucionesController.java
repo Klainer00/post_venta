@@ -52,8 +52,8 @@ public class DevolucionesController {
     }
 
     @PutMapping("/actualizar/{id}")
-    public ResponseEntity<Devolucion> actualizarDevolucion(@PathVariable("id") int id,@RequestBody Devolucion devolucionParaActualizar) {
-        Devolucion devolucionActualizada = devolucionesService.actualizarDevolucion(id, devolucionParaActualizar);
+    public ResponseEntity<Devolucion> cambiarEstado(@PathVariable int id,@RequestBody Devolucion devolucionParaActualizar) {
+        Devolucion devolucionActualizada = devolucionesService.cambiarEstado(id, devolucionParaActualizar);
     if (devolucionActualizada != null) {
         return ResponseEntity.ok(devolucionActualizada);
     } else {

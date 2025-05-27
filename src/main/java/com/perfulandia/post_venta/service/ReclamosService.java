@@ -22,4 +22,12 @@ public class ReclamosService {
     public Reclamo findById(int id) {
         return reclamosRepository.findById(id);
     }   
+    public Reclamo deleteById(int id) {
+        Reclamo buscarReclamo = this.findById(id);
+        if (buscarReclamo != null) {
+            reclamosRepository.deleteById(id);
+            return buscarReclamo;
+        }
+        return null;
+    }
 }
