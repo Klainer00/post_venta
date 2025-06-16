@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.perfulandia.post_venta.model.Producto;
 @Repository
 public interface ProductoRepository extends JpaRepository<Producto, Integer>{
-    List<Producto> findAll();
     @SuppressWarnings("unchecked")
     Producto findById(int id);
     Producto save(Producto reclamo);

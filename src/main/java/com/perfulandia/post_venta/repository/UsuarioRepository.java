@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.perfulandia.post_venta.model.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
-    List<Usuario> findAll();
     @SuppressWarnings("unchecked")
     Usuario findById(int id);
     Usuario save(Usuario usuario);

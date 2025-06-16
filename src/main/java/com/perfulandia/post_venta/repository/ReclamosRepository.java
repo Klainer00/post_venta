@@ -11,7 +11,6 @@ import com.perfulandia.post_venta.model.Reclamo;
 public interface ReclamosRepository  extends JpaRepository<Reclamo, Integer> {
     
     // Aquí puedes agregar métodos personalizados si es necesario
-    List<Reclamo> findAll();
     @SuppressWarnings("unchecked")
     Reclamo findById(int id);
     Reclamo save(Reclamo reclamo);
