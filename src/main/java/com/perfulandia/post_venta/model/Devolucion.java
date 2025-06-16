@@ -1,7 +1,6 @@
 package com.perfulandia.post_venta.model;
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,11 +27,11 @@ public class Devolucion {
     @Column(nullable = false)
     private LocalDate fecha; // Fecha de la devolución
     @Column(nullable = false)
-    private int estado = 1;// 1 para pendiente, 2 para aceptada, 3 para rechazada
+    private EnumEstado estado = EnumEstado.PENDIENTE; // 1 para pendiente, 2 para aceptada, 3 para rechazada
 
     @ManyToOne()
     @JoinColumn(name = "id_venta" , nullable = false)
-    private Venta venta;
+    private Venta id_venta;
      
 
 }

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -44,7 +43,7 @@ public class DevolucionesController {
         Venta buscar = ventaService.findById(id_venta);
         if (buscar != null) {
             // Asigna la venta encontrada a la devolucion antes de guardarla.
-            devolucion.setVenta(buscar);
+            devolucion.setId_venta(buscar);
             return new ResponseEntity<>(devolucionesService.crearDevolucion(devolucion), HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
