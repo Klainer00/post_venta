@@ -3,6 +3,7 @@ package com.perfulandia.post_venta.service;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -44,30 +45,20 @@ void testListarDevolucion() {
     
 }
 @Test
-void testCrearDevolucion() {
-    Venta v1= new Venta(1, null, null, null);
-    Devolucion devolucion = new Devolucion(1,"ta malo",LocalDate.now(), EnumEstado.PENDIENTE, v1);
-    when(devolucionRepository.save(devolucion)).thenReturn(devolucion);
-    Devolucion resultado = devolucionService.crearDevolucion(devolucion);
+void testCrearDevolucionExitoso() {
+    Venta v1 = new Venta(1, null, null, null);
+    Devolucion nuevaDevolucion = new Devolucion(1, "Producto defectuoso", LocalDate.now(), EnumEstado.PENDIENTE, v1);
+
+    when(devolucionRepository.findAll()).thenReturn(Arrays.asList());
+    when(devolucionRepository.save(nuevaDevolucion)).thenReturn(nuevaDevolucion);
+
+    Devolucion resultado = devolucionService.crearDevolucion(nuevaDevolucion);
+
     assertThat(resultado).isNotNull();
-    assertThat(resultado).isEqualTo(devolucion);
-    verify(devolucionRepository).save(devolucion);
-
-
+    assertThat(resultado).isEqualTo(nuevaDevolucion);
+    verify(devolucionRepository).findAll();
+    verify(devolucionRepository).save(nuevaDevolucion);
 }
-@Test
-void testDevolucionesDupe(){
-    Venta v1= new Venta(1, null, null, null);
-    Devolucion d1 = new Devolucion(1,"ta malo",LocalDate.now(), EnumEstado.PENDIENTE, v1);
-    Devolucion d2 = new Devolucion(2,"ta malo",LocalDate.now(), EnumEstado.PENDIENTE, v1);
-    when(devolucionRepository.save(d1)).thenReturn(d1);
-    Devolucion resultado = devolucionService.crearDevolucion(d1);
-    when(devolucionRepository.save(d2)).thenReturn(d2);
-    Devolucion resultado2 = devolucionService.crearDevolucion(d2);
-    verify(devolucionRepository).save(d1);
-    verify(devolucionRepository).save(d2);
 
 
-
-}
 }
